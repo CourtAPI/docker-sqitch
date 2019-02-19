@@ -8,7 +8,8 @@ RUN apk --no-cache add \
     perl \
     postgresql-client \
     postgresql-libs \
-    pv
+    pv \
+    zsh
 
 # Set the time zone
 ENV TZ="America/Los_Angeles"
