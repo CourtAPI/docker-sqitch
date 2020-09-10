@@ -39,7 +39,7 @@ RUN cpanm -n \
     Template::Plugin::Digest::MD5
 
 # Install Sqitch
-RUN cpanm -n DWHEELER/App-Sqitch-0.9997.tar.gz
+RUN cpanm -n DWHEELER/App-Sqitch-v1.1.0.tar.gz
 
 FROM base-image
 COPY --from=sqitch-build /usr/local/share/perl5 /usr/local/share/perl5
