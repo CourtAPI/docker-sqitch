@@ -26,12 +26,13 @@ RUN apk --no-cache add \
     make \
     mariadb-dev \
     perl-dev \
+    perl-app-cpanminus \
     postgresql-dev \
     tar \
-    wget \
-  && wget -O cpanm https://cpanmin.us \
-  && chmod +x cpanm \
-  && ./cpanm -n \
+    wget
+
+# Install extra CPAN modules
+RUN cpanm -n \
     DBD::Pg \
     DBD::mysql \
     Template \
