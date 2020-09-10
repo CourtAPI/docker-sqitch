@@ -1,4 +1,4 @@
-FROM alpine:3.9 AS base-image
+FROM alpine:3.12.0 AS base-image
 
 # install packages wanted in the final image
 RUN apk --no-cache add \
