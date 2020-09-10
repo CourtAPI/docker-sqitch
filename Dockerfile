@@ -35,6 +35,7 @@ RUN apk --no-cache add \
     DBD::Pg \
     DBD::mysql \
     Template \
+    Template::Plugin::Digest::MD5 \
     DWHEELER/App-Sqitch-0.9997.tar.gz \
   && rm -rf cpanm $HOME/.cpanm \
   && find /usr/local/share/man -type f -delete
