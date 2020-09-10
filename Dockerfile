@@ -36,10 +36,10 @@ RUN cpanm -n \
     DBD::Pg \
     DBD::mysql \
     Template \
-    Template::Plugin::Digest::MD5 \
-    DWHEELER/App-Sqitch-0.9997.tar.gz \
-  && rm -rf cpanm $HOME/.cpanm \
-  && find /usr/local/share/man -type f -delete
+    Template::Plugin::Digest::MD5
+
+# Install Sqitch
+RUN cpanm -n DWHEELER/App-Sqitch-0.9997.tar.gz
 
 FROM base-image
 COPY --from=sqitch-build /usr/local/share/perl5 /usr/local/share/perl5
