@@ -46,3 +46,4 @@ FROM base-image
 COPY --from=sqitch-build /usr/local/share/perl5 /usr/local/share/perl5
 COPY --from=sqitch-build /usr/local/lib/perl5 /usr/local/lib/perl5
 COPY --from=sqitch-build /usr/local/bin/* /usr/local/bin/
+COPY --from=sqitch-build /usr/local/etc/sqitch /usr/local/etc/sqitch
