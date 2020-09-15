@@ -4,7 +4,7 @@ FROM alpine:3.17.2 AS base-image
 RUN apk --no-cache add \
     bash \
     mariadb-client \
-    mariadb-connector-c-dev \
+    mariadb-connector-c \
     perl \
     postgresql14-client \
     pv \
@@ -24,6 +24,7 @@ RUN apk --no-cache add \
     gcc \
     make \
     mariadb-dev \
+    mariadb-connector-c-dev \
     perl-dev \
     perl-app-cpanminus \
     postgresql-dev \
