@@ -1,4 +1,4 @@
-FROM alpine:3.12.0 AS base-image
+FROM alpine:3.17.2 AS base-image
 
 # install packages wanted in the final image
 RUN apk --no-cache add \
@@ -6,8 +6,7 @@ RUN apk --no-cache add \
     mariadb-client \
     mariadb-connector-c-dev \
     perl \
-    postgresql-client \
-    postgresql-libs \
+    postgresql14-client \
     pv \
     zsh
 
@@ -39,7 +38,7 @@ RUN cpanm -n \
     Template::Plugin::Digest::MD5
 
 # Install Sqitch
-RUN cpanm -n DWHEELER/App-Sqitch-v1.1.0.tar.gz
+RUN cpanm -n DWHEELER/App-Sqitch-v1.3.1.tar.gz
 
 FROM base-image
 COPY --from=sqitch-build /usr/local/share/perl5 /usr/local/share/perl5
