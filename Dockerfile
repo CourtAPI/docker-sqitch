@@ -1,4 +1,4 @@
-FROM alpine:3.17.2 AS base-image
+FROM alpine:3.18.3 AS base-image
 
 # install packages wanted in the final image
 RUN apk --no-cache add \
@@ -6,7 +6,7 @@ RUN apk --no-cache add \
     mariadb-client \
     mariadb-connector-c \
     perl \
-    postgresql14-client \
+    postgresql15-client \
     pv \
     zsh
 
@@ -35,14 +35,18 @@ RUN apk --no-cache add \
 RUN cpanm -n \
     DBD::Pg \
     DBD::mysql \
+    Pod::Find \
     Template \
     Template::Plugin::Digest::MD5
 
 # Install Sqitch
-RUN cpanm -n DWHEELER/App-Sqitch-v1.3.1.tar.gz
+RUN cpanm -n DWHEELER/App-Sqitch-v1.4.0.tar.gz
 
 FROM base-image
 COPY --from=sqitch-build /usr/local/share/perl5 /usr/local/share/perl5
 COPY --from=sqitch-build /usr/local/lib/perl5 /usr/local/lib/perl5
 COPY --from=sqitch-build /usr/local/bin/* /usr/local/bin/
 COPY --from=sqitch-build /usr/local/etc/sqitch /usr/local/etc/sqitch
+
+# Pod::Find ets stored in /usr/share/perl5/core_perl, so pull all of that over as well.
+COPY --from=sqitch-build /usr/share/perl5/core_perl /usr/share/perl5/core_perl
