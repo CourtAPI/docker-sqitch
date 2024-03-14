@@ -32,7 +32,7 @@ RUN apk --no-cache add \
     wget
 
 # Install extra CPAN modules
-RUN cpanm -n \
+RUN cpanm -nv \
     DBD::Pg \
     DBD::mysql \
     Pod::Find \
