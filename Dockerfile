@@ -34,7 +34,7 @@ RUN apk --no-cache add \
 # Install extra CPAN modules
 RUN cpanm -nv \
     DBD::Pg \
-    DBD::mysql \
+    DBD::mysql@4.052 \
     Pod::Find \
     Template \
     Template::Plugin::Digest::MD5
