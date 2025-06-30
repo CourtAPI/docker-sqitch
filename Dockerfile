@@ -1,4 +1,4 @@
-FROM alpine:3.18.6 AS base-image
+FROM alpine:3.22.0 AS base-image
 
 # install packages wanted in the final image
 RUN apk --no-cache add \
@@ -40,7 +40,7 @@ RUN cpanm -nv \
     Template::Plugin::Digest::MD5
 
 # Install Sqitch
-RUN cpanm -n DWHEELER/App-Sqitch-v1.4.0.tar.gz
+RUN cpanm -n DWHEELER/App-Sqitch-v1.5.2.tar.gz
 
 FROM base-image
 COPY --from=sqitch-build /usr/local/share/perl5 /usr/local/share/perl5
